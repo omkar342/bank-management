@@ -234,6 +234,6 @@ app.get("/transfer-history",function(req,res){
     });
 })
 
-app.listen(port , function(){
+app.listen(port || process.env.PORT, function(){
     console.log(`Server is running on port ${port}`);
 })

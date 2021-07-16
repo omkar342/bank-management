@@ -359,6 +359,7 @@ tr:nth-child(odd):hover{
 .t-center button:active{
     transform: scaleX(1.1);
     background-color: #429cf0;
+    color: #00ffff;
 }
 
 .user tr:nth-child(even){
