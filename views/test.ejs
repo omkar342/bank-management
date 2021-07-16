@@ -1,0 +1,26 @@
+<%- include("partials/header")%>
+<div class="customers">
+    <h1>Money Transfer History.</h1>
+
+    <div>
+        <table class="customer-table">
+            <tr>
+                <th>ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Sender's Balance</th>
+                <th>Date & Time</th>
+            </tr>
+            <% rows.forEach(function(row,index) { %>
+                <tr>
+                  <td><%= ++index %></td>
+                  <td><%= row.sender %></td>
+                  <td><%= row.receiver %></td>
+                  <td><%= row.balance %></td>
+                  <td><%= row.date.toString().substring(0,25) %></td>
+                </tr>
+                <% }) %>
+        </table>
+    </div>
+</div>
+<%- include("partials/footer")%>   

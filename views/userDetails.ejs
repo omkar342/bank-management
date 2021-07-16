@@ -1,0 +1,58 @@
+<%- include("partials/header")%>
+    <div class="customers">
+        <div class="user">
+            <h1>These All Are The Proud Users of Our Company.</h1>
+            <table class="customer-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                </tr>
+                <% results[0].forEach(function(result,index) { %>
+                    <tr>
+                    <td><%= result.id %></td>
+                    <td><%= result.name %></td>
+                    <td><%= result.email %></td>
+                    <td>₹ <%= result.balance %></td>
+                    </tr>
+                <% }) %>
+            </table>
+
+            <div class="user-container">
+                <form method="POST" action="/user-details/<%= results[0][0].id %>">
+                    <label for="users">Transfer Money To:</label>
+                    <select name="receiver" id="users">
+                        <option value="Choose" selected>Choose The Person Whom You Want To Send The Money...</option>
+                        <% results[1].forEach(function(result,index){ %>
+                            <option value="<%= result.name %>"><%= result.name %> (₹<%= result.balance %>)</option>
+                            <!-- <div class="blk">
+                                <label for="amountR">AmountR:</label>
+                                <input type="text" name="amountR" value="<%= result.balance %>">
+                            </div> -->
+                        <% }) %>
+                    </select>
+
+                    <label for="amount">Amount:</label>
+                    <input type="text" name="amount">
+
+                    <% if (error != null) {%>
+                        <div class="balanceError">
+                            <p>*<%= error %></p>
+                        </div>
+                    <% } %>
+
+                    <div class="blk">
+                        <label for="sender">Sender:</label>
+                        <input type="text" name="sender" value="<%= results[0][0].name %>">
+
+                        <label for="amountS">AmountS:</label>
+                        <input type="text" name="amountS" value="<%= results[0][0].balance %>">
+                    </div>
+
+                    <button class="abtn"><p>Send Money Now <i class="fa fa-chevron-right view"></i><p></button>
+                </form>
+            </div>
+        </div>
+    </div>
+<%- include("partials/footer")%>   

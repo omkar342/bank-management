@@ -1,0 +1,24 @@
+<%- include("partials/header")%>
+    <div class="customers">
+        <h1>These All Are The Proud Users of Our Company.</h1>
+
+        <div>
+            <table class="customer-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                </tr>
+                <% rows.forEach(function(row,index) { %>
+                    <tr>
+                      <td><%= ++index %></td>
+                      <td><%= row.name %></td>
+                      <td><%= row.email %></td>
+                      <td>₹ <%= row.balance %></td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+    </div>
+<%- include("partials/footer")%>   
